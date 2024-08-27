@@ -1,0 +1,25 @@
+<section class="tasks-modal">
+  <p-dialog
+    [header]="'Logs from' + taskTitle"
+    [(visible)]="isVisible"
+    [modal]="true"
+    [draggable]="false"
+    [style]="{ width: '35rem' }"
+  >
+    <div class="p-3">
+      <p-timeline [value]="logs">
+        <ng-template pTemplate="content" let-log>
+          <small class="p-text-secondary">
+            {{ log.timestamp | date : "yyyy-MM-dd HH:mm:ss" }}
+          </small>
+        </ng-template>
+        <ng-template pTemplate="opposite" let-log>
+          {{ log.change }}
+        </ng-template>
+      </p-timeline>
+    </div>
+    <ng-template pTemplate="footer">
+      <p-button label="Ok" (onClick)="closeModal()" />
+    </ng-template>
+  </p-dialog>
+</section>

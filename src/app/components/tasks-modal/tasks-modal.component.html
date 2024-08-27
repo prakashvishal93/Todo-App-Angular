@@ -1,0 +1,84 @@
+<section class="tasks-modal">
+  <p-dialog
+    [header]="currentTask?.title || 'Create new Task'"
+    [(visible)]="isVisible"
+    [modal]="true"
+    [draggable]="false"
+    [style]="{ width: '35rem' }"
+  >
+    <div class="p-3">
+      <form class="grid" [formGroup]="taskForm">
+        <div class="field w-full">
+          <label for="title">Title</label>
+          <input
+            pInputText
+            id="title"
+            type="text"
+            formControlName="title"
+            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+          />
+        </div>
+
+        <div class="field w-full">
+          <label for="description">Description</label>
+          <textarea
+            id="description"
+            rows="5"
+            cols="30"
+            pInputTextarea
+            formControlName="description"
+            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+          >
+          </textarea>
+
+          <div class="field w-full mt-2 mb-3">
+            <label for="due-date">Priority</label>
+            <p-selectButton
+              class="w-full"
+              styleClass="w-full"
+              formControlName="priority"
+              [options]="priorityOptions"
+              optionLabel="label"
+              optionValue="value"
+            />
+          </div>
+
+          <div class="field w-full">
+            <label for="due-date">Due Date</label>
+            <p-calendar
+              appendTo="body"
+              formControlName="dueDate"
+              styleClass="w-full"
+              placeholder="Due Date"
+              [minDate]="currentDay"
+              [iconDisplay]="'input'"
+              [showIcon]="true"
+            />
+          </div>
+
+          <div class="field w-full mt-2 mb-3">
+            <label for="status">Status</label>
+            <p-dropdown
+              class="w-full"
+              styleClass="w-full"
+              formControlName="status"
+              placeholder="Select Status"
+              appendTo="body"
+              optionLabel="label"
+              optionValue="value"
+              [options]="statusOptions"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+    <ng-template pTemplate="footer">
+      <p-button label="Cancel" (onClick)="closeModal()" />
+      <p-button
+        [label]="isUpdate ? 'Update Task' : 'Create Task'"
+        [disabled]="taskForm.invalid"
+        (onClick)="saveTask()"
+      />
+    </ng-template>
+  </p-dialog>
+</section>

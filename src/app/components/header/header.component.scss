@@ -1,0 +1,10 @@
+@import '../../../../public/styles/colors.scss';
+
+$component: 'header';
+
+#{$component} {
+  background-color: $slate-950;
+  padding: 4.5rem 0 5rem 0;
+  display: flex;
+  justify-content: center;
+}

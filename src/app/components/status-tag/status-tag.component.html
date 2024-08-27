@@ -1,0 +1,10 @@
+<section class="status-tag">
+  @if (status) {
+  <div
+    class="p-2 flex align-items-center justify-content-center border-round"
+    [ngClass]="statusBackgroundColor"
+  >
+    <span [ngClass]="statusTextColor">{{ status }}</span>
+  </div>
+  }
+</section>

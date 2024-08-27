@@ -1,0 +1,10 @@
+<section class="priority-tag">
+  @if (priority) {
+  <div
+    class="p-2 flex align-items-center justify-content-center border-round"
+    [ngClass]="statusBackgroundColor"
+  >
+    <span [ngClass]="statusTextColor">{{ priority }}</span>
+  </div>
+  }
+</section>
